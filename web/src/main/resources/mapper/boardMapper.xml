@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- web.mapper.BoardMapper : web프로젝트 mapper패키지 BoardMapper인터페이스명 매칭 -->
+<mapper namespace="web.mapper.BoardMapper">
+
+	<select id="selectBoardList" resultType="web.dto.BoardDto"> <!-- id 값은 메소드명과 동일해야한다 -->
+		<![CDATA[
+		select * from t_board where deleted_yn = 'N' order by board_idx desc
+		]]>
+	</select>
+
+</mapper>

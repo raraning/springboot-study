@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>web</title>
+	<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+<center>
+<h1>게시판</h1>
+<table width=700 border=1>
+	<tr height=30>
+		<td width="15%">Idx</td>
+		<td width="*">제목</td>
+		<td width="15%">조회수</td>
+		<td width="20%">작성일</td>
+	</tr>
+	<tr th:if="${#lists.size(list)} > 0" th:each="list:${list}"> <!-- size는 list의 개수 -->
+		<td th:text="${list.boardIdx}"></td>
+		<td th:text="${list.title}"></td>
+		<td th:text="${list.hitCnt}"></td>
+		<td th:text="${#temporals.format(list.createdDatetime,'yyyy-MM-dd HH:mm:ss')}"></td>
+	</tr>
+	<tr th:if="${#lists.size(list)} <= 0 ">
+		<td colspan=4 align=center height=50>게시글이 없습니다.</td>
+	</tr>
+</table>	
+<table width=700 border=0>	
+	<tr>
+		<td></td>
+		<td align=right><a href="write">[글쓰기]</a></td>
+	</tr>
+</table>
+</center>
+</body>
+</html>
