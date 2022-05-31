@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/include/header :: html_head}"></head>
+<body>
+<table th:replace="~{/include/header :: top_table}"></table>
+<table th:replace="~{/include/header :: menu_table}"></table>
+<center>
+<h1>게시판</h1>
+<form id="frm" name="frm" action="" method="post">
+<input type="hidden" name="boardIdx" th:value="${board.boardIdx}">
+<table width=700 border=1>
+	<tr>
+		<td>조회수</td>
+		<td th:text="${board.hitCnt}"></td>
+	</tr>
+	<tr>
+		<td>글쓴이</td>
+		<td><input name="creatorId" th:value="${board.creatorId}"></td>
+	</tr>
+	<tr>
+		<td>제목</td>
+		<td><input name="title" th:value="${board.title}"></td>
+	</tr>
+	<tr>
+		<td>내용</td>
+		<td><textarea name="contents" th:text="${board.contents}"></textarea></td>
+	</tr>
+</table>
+</form>
+<table>
+	<tr>
+		<td>
+			<a href="list">[목록]</a>
+		</td>
+		<td>
+			<a id="modify">[수정]</a>
+			<a id="delete">[삭제]</a>
+		</td>
+	</tr>
+</table>
+</center>
+<table th:replace="~{/include/header :: bottom_table}"></table>
+<script>
+$(document).ready(function(){
+	var frm = $("#frm")[0];
+	//수정
+	$("#modify").on("click",function(){
+		frm.action = "modify";
+		frm.submit();
+	});
+	//삭제
+	$("#delete").on("click",function(){
+		frm.action = "delete";
+		frm.submit();
+	});
+});
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

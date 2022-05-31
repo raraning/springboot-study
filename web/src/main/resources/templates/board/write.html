@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{/include/header :: html_head}"></head>
+<body>
+<table th:replace="~{/include/header :: top_table}"></table>
+<table th:replace="~{/include/header :: menu_table}"></table>
+<center>
+<h1>게시판</h1>
+<form name="frm" action="write" method="post">
+<table width=700 border=1>
+	<tr>
+		<td>제목</td>
+		<td><input name="title"></td>
+	</tr>
+	<tr>
+		<td>글쓴이</td>
+		<td><input name="creatorId"></td>
+	</tr>
+	<tr>
+		<td>내용</td>
+		<td><textarea name="contents"></textarea></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><button>글쓰기</button></td>
+	</tr>
+</table>
+</form>
+</center>
+<table th:replace="~{/include/header :: bottom_table}"></table>
+</body>
+</html>

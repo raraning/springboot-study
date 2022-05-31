@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title>web</title>
-	<link rel="stylesheet" href="/css/style.css" />
-</head>
+<head th:replace="~{/include/header :: html_head}"></head>
 <body>
+<table th:replace="~{/include/header :: top_table}"></table>
+<table th:replace="~{/include/header :: menu_table}"></table>
 <center>
 <h1>게시판</h1>
 <table width=700 border=1>
@@ -16,7 +15,12 @@
 	</tr>
 	<tr th:if="${#lists.size(list)} > 0" th:each="list:${list}"> <!-- size는 list의 개수 -->
 		<td th:text="${list.boardIdx}"></td>
-		<td th:text="${list.title}"></td>
+		<td>
+			<a href="view?boardIdx="
+				th:attrappend="href=${list.boardIdx}"
+				th:text="${list.title}">
+			</a>
+		</td>
 		<td th:text="${list.hitCnt}"></td>
 		<td th:text="${#temporals.format(list.createdDatetime,'yyyy-MM-dd HH:mm:ss')}"></td>
 	</tr>
@@ -31,5 +35,6 @@
 	</tr>
 </table>
 </center>
+<table th:replace="~{/include/header :: bottom_table}"></table>
 </body>
 </html>

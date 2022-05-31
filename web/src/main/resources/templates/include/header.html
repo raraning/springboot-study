@@ -1,0 +1,33 @@
+<head th:fragment="html_head">
+    <meta charset="UTF-8">
+    <title>header.html</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
+</head>
+<table width=100% height=50 border=1 th:fragment="top_table">
+	<tr>
+		<td>
+			<a href="/">[로고]</a>
+		</td>
+		<td align=right>
+			<a href="">[로그인]</a>
+			<a href="">[회원가입]</a>
+		</td>
+	</tr>
+</table>
+<table width=100% height=50 border=1 th:fragment="menu_table">
+	<tr>
+		<td align=center>
+			<a href="/board/list">[Cri게시판]</a>
+			<a href="/board/list">[게시판]</a>
+		</td>
+	</tr>
+</table>
+<table width=100% height=50 border=1 th:fragment="bottom_table">
+	<tr>
+		<td align=center>
+			<a href="/board/list">카피라이터</a>
+		</td>
+	</tr>
+</table>

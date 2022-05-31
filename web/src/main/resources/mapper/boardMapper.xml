@@ -10,5 +10,63 @@
 		select * from t_board where deleted_yn = 'N' order by board_idx desc
 		]]>
 	</select>
+	
+	<insert id="insertBoard">
+		<![CDATA[
+		insert into t_board (
+			title,
+			contents,
+			created_datetime,
+			creator_id
+		) values (
+			#{title},
+			#{contents},
+			NOW(),
+			#{creatorId}
+		)
+		]]>
+	</insert>
+	
+	<select id="selectBoardDatail" resultType="web.dto.BoardDto">
+		<![CDATA[
+		select * from t_board where deleted_yn = 'N' and board_idx = #{boardIdx}
+		]]>
+	</select>
+	
+	<update id="updateHitCount">
+		update t_board set
+			hit_cnt = hit_cnt + 1
+		where board_idx = #{boardIdx}
+	</update>
+	
+	<update id="updateBoard">
+		<![CDATA[
+		update t_board set
+			title = #{title},
+			contents = #{contents},
+			updated_datetime = NOW(),
+			updater_id = #{creatorId}
+		where
+			board_idx = #{boardIdx}
+		]]>
+	</update>
+	
+	<update id="deleteBoard">
+		update t_board set deleted_yn = 'Y' where board_idx = #{boardIdx}
+	</update>
+	
+	<select id="selectCriList" resultType="web.dto.BoardDto"> <!-- id 값은 메소드명과 동일해야한다 -->
+		<![CDATA[
+		select * from t_board where deleted_yn = 'N' order by board_idx desc limit #{pageStart}, #{perPageNum}
+		]]>
+	</select>
 
 </mapper>
+
+
+
+
+
+
+
+
